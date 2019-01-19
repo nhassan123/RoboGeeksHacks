@@ -12,8 +12,8 @@ from google.cloud import language
 from google.cloud.language import enums
 from google.cloud.language import types
 
-#from app import db
-#from app.models import Entry
+from app import db
+from app.models import User
 
 #Main Page
 @app.route('/')
@@ -34,6 +34,12 @@ def members():
 def getMember(name):
     return name
 
+@app.route("/users/")
+def geUsers():
+    data =  User.query.all()
+    print data
+    # return "It got here"
+    return render_template('userList.html', data=data)
 
 def defineGoogleClient():
     # Instantiates a client
