@@ -5,6 +5,7 @@ import time
 from datetime import datetime
 import subprocess
 import random
+from app import db
 
 # Imports the Google Cloud client library
 from google.cloud import language
