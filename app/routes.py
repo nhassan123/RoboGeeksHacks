@@ -38,6 +38,7 @@ def getMember(name):
 def geUsers():
     data =  User.query.all()
     print data
+    print User.query.filter_by(username='Najah').first().email
     # return "It got here"
     return render_template('userList.html', data=data)
 
