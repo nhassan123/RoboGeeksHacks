@@ -6,6 +6,11 @@ from datetime import datetime
 import subprocess
 import random
 
+# Imports the Google Cloud client library
+from google.cloud import language
+from google.cloud.language import enums
+from google.cloud.language import types
+
 #from app import db
 #from app.models import Entry
 
@@ -13,7 +18,8 @@ import random
 @app.route('/')
 @app.route('/index')
 def index():
-    return "Index!"
+    score, magnitude = defineGoogleClient()
+    return render_template("index.html", variable=score, variable2=magnitude)
 
 @app.route("/hello")
 def hello():
@@ -27,3 +33,20 @@ def members():
 def getMember(name):
     return name
 
+
+def defineGoogleClient():
+    # Instantiates a client
+    client = language.LanguageServiceClient()
+
+    # The text to analyze
+    # this can be read from file later
+    text = u'Hello, world!'
+    document = types.Document(
+    content=text,
+    type=enums.Document.Type.PLAIN_TEXT)
+
+    # Detects the sentiment of the text
+    sentiment = client.analyze_sentiment(document=document).document_sentiment
+    return sentiment.score, sentiment.magnitude;
+    # print('Text: {}'.format(text))
+    # print('Sentiment: {}, {}'.format(sentiment.score, sentiment.magnitude))
