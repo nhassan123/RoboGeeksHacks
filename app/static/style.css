@@ -1,0 +1,15 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:400,700');
+@import url('https://fonts.googleapis.com/css?family=Indie+Flower');
+@import url('https://fonts.googleapis.com/css?family=Satisfy');
+@import url('https://fonts.googleapis.com/css?family=Notable');
+@import url('https://fonts.googleapis.com/css?family=Gruppo|Love+Ya+Like+A+Sister');
+body{
+	background-color: white;
+	font-family: "Open Sans", sans-serif;
+	padding: 5px 25px;
+	font-size: 18px;
+	margin:0;
+	color: black;
+}
+
+
